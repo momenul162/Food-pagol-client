@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import { baseUrl } from "../config/baseURL";
-import { useNavigate } from "react-router-dom";
 
 const useAdmin = () => {
   const { user } = useAuth();

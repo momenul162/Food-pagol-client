@@ -14,14 +14,11 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center">
         {/* Page content here */}
         <Outlet></Outlet>
-        <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
-          Open drawer
-        </label>
       </div>
       <div className="drawer-side border bg-[#D1A054]">
         <div className="menu p-4 w-80">
@@ -32,7 +29,7 @@ const Dashboard = () => {
           <p className="text-center tracking-[.3em]">RESTAURANT</p>
         </div>
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu-bar menu p-4 w-80 min-h-full">
+        <ul className="menu-bar menu p-4 md:w-80 min-h-full">
           {/* Sidebar content here */}
           {isAdmin?.admin ? (
             <>
@@ -42,12 +39,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservation">
+                <NavLink to="/dashboard/additem">
                   <ImSpoonKnife></ImSpoonKnife> Add Items
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payhistory">
+                <NavLink to="/dashboard/manageitem">
                   <TfiMenuAlt></TfiMenuAlt> Manage Items
                 </NavLink>
               </li>
@@ -70,8 +67,8 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservation">
-                  <FaCalendarDays></FaCalendarDays> Reservation
+                <NavLink to="/dashboard/payment">
+                  <FaCalendarDays></FaCalendarDays> Payment
                 </NavLink>
               </li>
               <li>

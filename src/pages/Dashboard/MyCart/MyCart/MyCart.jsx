@@ -3,17 +3,17 @@ import useCart from "../../../../hooks/useCart";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useContext } from "react";
-import { AuthContex } from "../../../../AuthProvider/AuthProvider";
+import useAuth from "../../../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
-  const { user } = useContext(AuthContex);
+  const { user } = useAuth();
   console.log(cart);
 
   let totalPrice = 0;
   if (user) {
-    totalPrice = parseFloat(cart.reduce((a, p) => a + p.price, 0));
+    totalPrice = parseFloat(cart?.reduce((a, p) => a + p.price, 0));
   }
 
   const handleRemove = (item) => {
@@ -34,7 +34,6 @@ const MyCart = () => {
           .then((data) => {
             if (data.deletedCount > 0) {
               refetch();
-              // Swal.fire("Deleted!", "Your file has been deleted.", "success");
               Swal.fire({
                 position: "top-center",
                 icon: "success",
@@ -54,7 +53,9 @@ const MyCart = () => {
       <div className="flex justify-between mb-8 uppercase">
         <h1 className="text-3xl">Tota Orders: {cart.length}</h1>
         <h1 className="text-3xl">Tota Price: ${totalPrice}</h1>
-        <button className="btn btn-square btn-warning">PAY</button>
+        <Link to="/dashboard/payment">
+          <button className="btn btn-square btn-warning">PAY</button>
+        </Link>
       </div>
       <table className="table">
         {/* head */}

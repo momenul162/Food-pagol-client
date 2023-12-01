@@ -8,7 +8,7 @@ import { baseUrl } from "../../../config/baseURL";
 const AllUser = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await baseUrl.get("users");
-    return res.data;
+    return res?.data;
   });
 
   const handleMakeAdmin = (user) => {
