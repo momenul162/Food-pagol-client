@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { baseUrl } from "../../../config/baseURL";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ cart, price }) => {
   const stripe = useStripe();
@@ -14,12 +15,15 @@ const CheckoutForm = ({ cart, price }) => {
   const [clientSecret, setClientSecret] = useState("");
   const [transectionId, setTransectionId] = useState("");
   const [processing, setProcessing] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    baseUrl.post("/create-payment-intent", { price }).then((res) => {
-      console.log(res.data);
-      setClientSecret(res.data.clientSecret);
-    });
+    if (price > 0) {
+      baseUrl.post("/create-payment-intent", { price }).then((res) => {
+        console.log(res.data);
+        setClientSecret(res.data.clientSecret);
+      });
+    }
   }, []);
 
   const handleSubmit = async (event) => {
@@ -38,7 +42,7 @@ const CheckoutForm = ({ cart, price }) => {
 
     if (error) {
       setCardError(error.message);
-      console.log("[error]", error);
+      console.log("[error]", error.message);
     } else {
       setCardError("");
       console.log("[PaymentMethod]", paymentMethod);
@@ -67,12 +71,18 @@ const CheckoutForm = ({ cart, price }) => {
         email: user?.email,
         transectionId: paymentIntent.id,
         price,
+        dete: new Date(),
         quantity: cart?.length,
-        items: cart?.map((item) => item._id),
+        cartItems: cart?.map((item) => item._id),
+        menuItems: cart?.map((item) => item.menuItemId),
+        status: "Service pending",
         itemNames: cart?.map((item) => item.name),
       };
       baseUrl.post("/payments", payment).then((res) => {
         console.log(res.data);
+        if (res.data.insertedResult) {
+          navigate("/");
+        }
       });
     }
   };

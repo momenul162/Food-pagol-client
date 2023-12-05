@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaCartShopping, FaUser } from "react-icons/fa6";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/userAdmin";
 
 const NavBar = () => {
   const [error, setError] = useState(true);
   const [cart] = useCart();
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -28,6 +30,10 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/foods/salad">Foods</Link>
+      </li>
+
+      <li>
+        <Link to={isAdmin?.admin ? "/dashboard/adminhome" : "/dashboard/userhome"}>Dashboard</Link>
       </li>
 
       {user ? (
@@ -93,7 +99,7 @@ const NavBar = () => {
               </label>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src="hello" alt="hello" />
+                  <img src={user?.reloadUserInfo?.photoUrl} alt="No Img" />
                 </div>
               </label>
             </div>

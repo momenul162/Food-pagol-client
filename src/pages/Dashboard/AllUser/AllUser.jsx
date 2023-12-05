@@ -32,7 +32,7 @@ const AllUser = () => {
 
   return (
     <div className="overflow-x-auto min-w-full px-20">
-      <SectionTitle subHeader="How many" mainHeader="Manage All User"></SectionTitle>
+      <SectionTitle subHeader="How many" mainHeader="All User"></SectionTitle>
       <div className="flex justify-between mb-8 uppercase">
         <h1 className="text-3xl">Tota Orders: {users.length}</h1>
       </div>

@@ -3,18 +3,13 @@ import useCart from "../../../../hooks/useCart";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAuth from "../../../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
-  const { user } = useAuth();
-  console.log(cart);
 
-  let totalPrice = 0;
-  if (user) {
-    totalPrice = parseFloat(cart?.reduce((a, p) => a + p.price, 0));
-  }
+  enabled: !!cart;
+  const totalPrice = parseFloat(cart?.reduce((a, p) => a + p.price, 0));
 
   const handleRemove = (item) => {
     Swal.fire({
