@@ -7,7 +7,6 @@ const useAdmin = () => {
 
   const { data: isAdmin, isLoading } = useQuery({
     queryKey: ["isAdmin", user?.email],
-    enabled: !!user?.email,
     enabled: !loading,
     queryFn: async () => {
       try {

@@ -1,26 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
+import { baseUrl } from "../config/baseURL";
 
 const useCart = () => {
   const { user } = useAuth();
-  const token = localStorage?.getItem("jwt-access-token");
-
-  const shouldFetchData = Boolean(user && token);
 
   const { refetch, data: cart = [] } = useQuery({
     queryKey: ["carts", user?.email],
     queryFn: async () => {
-      if (!shouldFetchData) {
+      if (!user) {
         return [];
       }
-      const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
-        headers: {
-          authorization: `bearer ${token}`,
-        },
-      });
-      return res.json();
+      const res = await baseUrl(`/carts?email=${user?.email}`);
+
+      return res.data;
     },
-    enabled: shouldFetchData,
   });
   return [cart, refetch];
 };

@@ -8,7 +8,7 @@ const MenuCategory = ({ items, title, img, details }) => {
     <div className="mt-10">
       {title && <Cover img={img} title={title} details={details}></Cover>}
       <div className="grid md:grid-cols-2  gap-8 mt-10">
-        {items.map((item) => (
+        {items?.map((item) => (
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>

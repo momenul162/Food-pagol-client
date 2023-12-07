@@ -8,7 +8,7 @@ import FoodAsTab from "../FoodAsTab/FoodAsTab";
 import { useParams } from "react-router-dom";
 
 const Foods = () => {
-  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks", "deshi"];
   const { category } = useParams();
   const initialTab = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialTab);
@@ -21,6 +21,7 @@ const Foods = () => {
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
   const drinks = menu.filter((item) => item.category === "drinks");
+  const deshi = menu.filter((item) => item.category === "deshi");
 
   return (
     <div className="">
@@ -38,6 +39,7 @@ const Foods = () => {
           <Tab>SOUPS</Tab>
           <Tab>DESSERTS</Tab>
           <Tab>DRINKS</Tab>
+          <Tab>DESHI</Tab>
         </TabList>
         <TabPanel>
           <FoodAsTab itemsPerPage={6} items={salad}></FoodAsTab>
@@ -53,6 +55,9 @@ const Foods = () => {
         </TabPanel>
         <TabPanel>
           <FoodAsTab itemsPerPage={6} items={drinks}></FoodAsTab>
+        </TabPanel>
+        <TabPanel>
+          <FoodAsTab itemsPerPage={6} items={deshi}></FoodAsTab>
         </TabPanel>
       </Tabs>
     </div>

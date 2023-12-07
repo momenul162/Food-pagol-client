@@ -15,6 +15,7 @@ const Menu = () => {
   const soup = menu.filter((item) => item.category === "soup");
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
+  const deshi = menu.filter((item) => item.category === "deshi");
   const offered = menu.filter((item) => item.category === "offered");
   return (
     <>
@@ -44,6 +45,12 @@ const Menu = () => {
           img={saladImg}
           items={salad}
           title="salad"
+          details="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        ></MenuCategory>
+        <MenuCategory
+          img={saladImg}
+          items={deshi}
+          title="deshi"
           details="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         ></MenuCategory>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 
 const MenuItem = ({ item }) => {
   const { name, recipe, image, price } = item;
+  console.log(item.category == "deshi");
   return (
     <div className="flex space-x-2">
       <img

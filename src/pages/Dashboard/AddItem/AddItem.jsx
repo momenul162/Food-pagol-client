@@ -11,8 +11,8 @@ const AddItem = () => {
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
   const onSubmit = (data) => {
-    console.log(data);
     const formData = new FormData();
+    console.log(formData);
     formData.append("image", data.image[0]);
 
     fetch(img_hosting_url, {
@@ -21,7 +21,6 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((responseData) => {
-        console.log(responseData);
         if (responseData.success) {
           const imgURL = responseData.data.display_url;
           const { name, price, category, recipe } = data;
@@ -77,12 +76,12 @@ const AddItem = () => {
               <option disabled value="Select One">
                 Select one
               </option>
-              <option value="Pizza">Pizza</option>
-              <option value="Desserts">Desserts</option>
-              <option value="Deshi">Deshi</option>
-              <option value="Salad">Salad</option>
-              <option value="Soups">Soups</option>
-              <option value="Drinks">Drinks</option>
+              <option value="pizza">Pizza</option>
+              <option value="desserts">Desserts</option>
+              <option value="deshi">Deshi</option>
+              <option value="salad">Salad</option>
+              <option value="soups">Soups</option>
+              <option value="drinks">Drinks</option>
             </select>
           </div>
           <div className="form-control w-full">

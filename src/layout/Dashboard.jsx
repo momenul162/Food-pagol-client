@@ -14,22 +14,49 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
 
   return (
-    <div className="drawer drawer-open">
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center">
+    <div className="drawer md:drawer-open">
+      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+
+      <div className="drawer-content flex flex-col">
+        {/* Navbar */}
+        <div className="w-full navbar">
+          <div className="flex-none md:hidden">
+            <label
+              htmlFor="my-drawer-3"
+              aria-label="open sidebar"
+              className="btn btn-square btn-ghost"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6 stroke-current"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </label>
+          </div>
+          <div className="flex-1 px-2 mx-2 md:hidden">Food Pagol</div>
+        </div>
         {/* Page content here */}
         <Outlet></Outlet>
       </div>
-      <div className="drawer-side border bg-[#D1A054]">
-        <div className="menu p-4 w-80">
-          <NavLink to="/" className="btn btn-ghost normal-case">
-            <img src="/logo.png" className="w-[45px]" alt="" />{" "}
-            <h1 className="md:text-3xl pt-2">FOOD PAGOL</h1>
-          </NavLink>
-          <p className="text-center tracking-[.3em]">RESTAURANT</p>
-        </div>
-        <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu-bar menu p-4 md:w-80 min-h-full">
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
+
+        <ul className="menu p-4 sm:w-52 md:w-72 min-h-full bg-[#D1A054]">
+          <div className="menu md:mb-10">
+            <NavLink to="/" className="btn btn-ghost normal-case">
+              <img src="/logo.png" className="w-[45px]" alt="" />{" "}
+              <h1 className="sm: text-xl md:text-3xl">FOOD PAGOL</h1>
+            </NavLink>
+            <p className="text-center tracking-[.3em] md:mt-8">RESTAURANT</p>
+          </div>
           {/* Sidebar content here */}
           {isAdmin?.admin ? (
             <>
@@ -72,7 +99,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payhistory">
+                <NavLink to="/dashboard/payment_history">
                   <FaWallet></FaWallet> Payment History
                 </NavLink>
               </li>

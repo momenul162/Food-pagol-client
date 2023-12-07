@@ -4,6 +4,7 @@ import { FaCartShopping, FaUser } from "react-icons/fa6";
 import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/userAdmin";
+import altPhoto from "../../../assets/alt.jpg";
 
 const NavBar = () => {
   const [error, setError] = useState(true);
@@ -85,8 +86,8 @@ const NavBar = () => {
           <div className="navbar hidden lg:flex">
             <ul className="menu menu-horizontal px-1 ">{navItems}</ul>
           </div>
-          <Link to="/dashboard/mycart">
-            <div className="navbar-end mr-5 flex items-center gap-4">
+          <div className="navbar-end mr-5 flex items-center gap-4">
+            <Link to="/dashboard/mycart">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <div className="indicator">
                   <div className="text-3xl">
@@ -97,13 +98,13 @@ const NavBar = () => {
                   </span>
                 </div>
               </label>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user?.reloadUserInfo?.photoUrl} alt="No Img" />
-                </div>
-              </label>
-            </div>
-          </Link>
+            </Link>
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user?.reloadUserInfo?.photoUrl || altPhoto} alt="No Img" />
+              </div>
+            </label>
+          </div>
         </div>
       </div>
     </>

@@ -4,19 +4,11 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useMenu from "../../../hooks/useMenu";
 import { baseUrl } from "../../../config/baseURL";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageItem = () => {
   const [menu, , refetch] = useMenu();
-
-  // const handleRemove = (item) => {
-  //   const { data, refetch } = useQuery({
-  //     queryKey: ["menuItem"],
-  //     queryFn: async (item) => {
-  //       const res = await baseUrl.delete(`/menu/${item._id}`);
-  //       console.log(res);
-  //     },
-  //   });
-  // };
+  console.log(menu);
 
   const handleRemove = async (item) => {
     const result = await Swal.fire({
@@ -85,12 +77,11 @@ const ManageItem = () => {
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>
-                <button
-                  onClick={() => handleMakeAdmin()}
-                  className="btn btn-square btn-outline text-white bg-[#D1A054]"
-                >
-                  <FaEdit />
-                </button>
+                <Link to={`/dashboard/updateitem/${item._id}`}>
+                  <button className="btn btn-square btn-outline text-white bg-[#D1A054]">
+                    <FaEdit />
+                  </button>
+                </Link>
               </td>
               <td>
                 <button

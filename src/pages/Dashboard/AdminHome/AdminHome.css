@@ -1,27 +1,23 @@
 .state .revenue {
     border-radius: 8px;
     text-align: center;
-    padding: 15px 50px;
     background: linear-gradient(90deg, #BB34F5 0%, #FCDBFF 100%);
 }
 
 .state .users {
     border-radius: 8px;
     text-align: center;
-    padding: 15px 50px;
     background: linear-gradient(90deg, #D3A256 0%, #FDE8C0 100%);
 }
 
 .state .products {
     border-radius: 8px;
     text-align: center;
-    padding: 15px 50px;
     background: linear-gradient(90deg, #FE4880 0%, #FECDE9 100%);
 }
 
 .state .orders {
     border-radius: 8px;
     text-align: center;
-    padding: 15px 50px;
     background: linear-gradient(90deg, #6AAEFF 0%, #B6F7FF 100%);
 }
