@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const ManageItem = () => {
   const [menu, , refetch] = useMenu();
-  console.log(menu);
 
   const handleRemove = async (item) => {
     const result = await Swal.fire({
@@ -24,7 +23,6 @@ const ManageItem = () => {
     if (result.isConfirmed) {
       try {
         const res = await baseUrl.delete(`/menu/${item._id}`);
-        console.log(res);
 
         if (res.data.deletedCount > 0) {
           refetch();
@@ -67,7 +65,7 @@ const ManageItem = () => {
         </thead>
 
         {menu?.map((item, index) => (
-          <tbody key={item._id}>
+          <tbody key={item?._id}>
             {/* row 1 */}
             <tr>
               <th>{index + 1}</th>

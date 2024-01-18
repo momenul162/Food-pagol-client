@@ -2,14 +2,46 @@ import React from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { useLoaderData } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { baseUrl } from "../../../config/baseURL";
+import Swal from "sweetalert2";
+
+const image_hosting_token = import.meta.env.VITE_image_apiKey;
 
 const UpdateItem = () => {
   const item = useLoaderData();
-  console.log(item);
+  console.log(item.image);
+
   const { register, handleSubmit, reset } = useForm();
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
   const onSubmit = (data) => {
-    console.log(data);
+    const formData = new FormData();
+    formData.append("image", data.image[0] ? data.image[0] : item.image);
+
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData.success) {
+          let img = resData.data.display_url;
+          const { name, price, category, recipe } = data;
+          const updateItem = { name, price: parseFloat(price), category, recipe, image: img };
+
+          baseUrl.put(`menu/${item._id}`, updateItem).then((res) => {
+            if (res.data.modifiedCount) {
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Item Update Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
+        }
+      });
   };
 
   return (

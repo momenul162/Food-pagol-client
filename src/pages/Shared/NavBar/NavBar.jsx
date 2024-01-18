@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/userAdmin";
 import altPhoto from "../../../assets/alt.jpg";
+import WebTitle from "../../../components/WebTitle/WebTitle";
 
 const NavBar = () => {
   const [error, setError] = useState(true);
@@ -51,7 +52,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar fixed z-10 bg-blue-800 bg-opacity-75 text-white max-w-screen-xl">
+      <div className="navbar fixed z-10 bg-blue-500 bg-opacity-75 text-white max-w-screen-xl">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -78,8 +79,7 @@ const NavBar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case">
-            <img src="/logo.png" className="w-[45px]" alt="" />{" "}
-            <h1 className="md:text-3xl text-orange-500">FOOD PAGOL</h1>
+            <img src="/logo.png" className="w-[45px]" alt="" /> <WebTitle />
           </Link>
         </div>
         <div className="w-full navbar-end">

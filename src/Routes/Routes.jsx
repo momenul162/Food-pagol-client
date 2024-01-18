@@ -19,6 +19,7 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import UpdateItem from "../pages/Dashboard/UpdateItem/UpdateItem";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import AddReview from "../pages/Dashboard/AddReview/AddReview";
 
 export const router = createBrowserRouter([
   {
@@ -36,14 +37,6 @@ export const router = createBrowserRouter([
       {
         path: "foods/:category",
         element: <Foods></Foods>,
-      },
-      {
-        path: "secret",
-        element: (
-          <PrivateRoute>
-            <Secret></Secret>
-          </PrivateRoute>
-        ),
       },
     ],
   },
@@ -85,6 +78,11 @@ export const router = createBrowserRouter([
       {
         path: "payment_history",
         element: <PaymentHistory></PaymentHistory>,
+      },
+      {
+        path: "review/:id",
+        loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+        element: <AddReview></AddReview>,
       },
 
       // Admin Routes

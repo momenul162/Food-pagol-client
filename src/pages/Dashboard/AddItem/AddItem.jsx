@@ -12,7 +12,6 @@ const AddItem = () => {
 
   const onSubmit = (data) => {
     const formData = new FormData();
-    console.log(formData);
     formData.append("image", data.image[0]);
 
     fetch(img_hosting_url, {
@@ -25,11 +24,10 @@ const AddItem = () => {
           const imgURL = responseData.data.display_url;
           const { name, price, category, recipe } = data;
           const newItem = { name, price: parseFloat(price), category, recipe, image: imgURL };
-          console.log(newItem);
 
           baseUrl.post("menu", newItem).then((data) => {
-            console.log(data.data);
             if (data.data.insertedId) {
+              reset();
               Swal.fire({
                 position: "top-center",
                 icon: "success",

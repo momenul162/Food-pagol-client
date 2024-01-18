@@ -1,23 +1,10 @@
 import React from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import useAuth from "../../../hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
-import { baseUrl } from "../../../config/baseURL";
+import usePayment from "../../../hooks/usePayment";
+import { Link } from "react-router-dom";
 
 const PaymentHistory = () => {
-  const { user } = useAuth();
-
-  const { data: history = [] } = useQuery({
-    queryKey: ["payments", user?.email],
-    enabled: !user,
-    queryFn: async () => {
-      if (!user) {
-        return [];
-      }
-      const res = await baseUrl(`/payments?email=${user?.email}`);
-      return res.data;
-    },
-  });
+  const [payment, refetch] = usePayment();
 
   return (
     <div className="overflow-x-auto min-w-full px-20">
@@ -30,17 +17,23 @@ const PaymentHistory = () => {
             <th>Category</th>
             <th>Total Price</th>
             <th>Payment Date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
-          {history &&
-            history.map((item) => (
+          {payment &&
+            payment.map((item) => (
               <tr key={item._id}>
                 <th>{item.email}</th>
                 <th>Food Order</th>
                 <td>{item.price}</td>
                 <td>{item.dete}</td>
+                <td>
+                  <Link className="text-error underline" to={`/dashboard/review/${item._id}`}>
+                    Review
+                  </Link>
+                </td>
               </tr>
             ))}
         </tbody>

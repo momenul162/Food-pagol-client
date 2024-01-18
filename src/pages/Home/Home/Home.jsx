@@ -15,10 +15,10 @@ const Home = () => {
       <Category></Category>
       <AboutFoodPagol></AboutFoodPagol>
       <PopularMenu></PopularMenu>
-      <Contact></Contact>
       <ChefRecommends></ChefRecommends>
       <FeatureItem></FeatureItem>
       <Ratings></Ratings>
+      <Contact></Contact>
     </div>
   );
 };

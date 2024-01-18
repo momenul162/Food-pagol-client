@@ -54,9 +54,9 @@ const FoodCart = ({ item }) => {
   };
 
   return (
-    <div className="card card-compact w-96 shadow-xl">
+    <div className="card card-compact w-96 shadow-xl bg-white">
       <figure>
-        <img src={image} alt="Shoes" className="rounded-xl" />
+        <img src={image} alt="Shoes" className="p-3" />
       </figure>
       <p className="bg-black absolute top-5 right-5 text-white px-4 py-1 rounded">${price}</p>
       <div className="card-body items-center text-center">

@@ -13,8 +13,8 @@ const UserHome = () => {
   const uniqueCategory = new Set(menu.map((item) => item.category));
 
   return (
-    <div>
-      <h1 className="text-3xl">Welcome, {user?.displayName}</h1>
+    <div className="sm:mx-4 md:mx-10">
+      <h1 className="text-3xl mb-8">Welcome, {user?.displayName}</h1>
       <div className="state grid md:grid-cols-3 gap-10">
         <div className="revenue flex justify-center items-center gap-2">
           <AdminState
@@ -37,9 +37,13 @@ const UserHome = () => {
           <AdminState icon={<BsTelephoneOutbound />} stateTitle="Contact" state="3"></AdminState>
         </div>
       </div>
-      <div className="card md:card-side shadow-xl">
-        <figure className="w-1/2">
-          <img src={user?.reloadUserInfo?.photoUrl || altPhoto} alt="Album" />
+      <div className="card md:card-side items-center gap-4 mt-10 shadow-xl bg-white">
+        <figure className="w-1/2 md:p-24 bg-[#D1A054]">
+          <img
+            className="w-[195px] rounded-full"
+            src={user?.reloadUserInfo?.photoUrl || altPhoto}
+            alt="Album"
+          />
         </figure>
         <div className="card-body w-1/2">
           <h2 className="card-title">New album is released!</h2>

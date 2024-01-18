@@ -11,17 +11,19 @@ const PopularMenu = () => {
   return (
     <section className="mb-12">
       <SectionTitle mainHeader="Our Popular menu" subHeader="Check it out"></SectionTitle>
-      <div className="grid md:grid-cols-2  gap-8">
-        {popular.map((item) => (
-          <MenuItem key={item._id} item={item}></MenuItem>
-        ))}
-      </div>
-      <div className="text-center mt-5">
-        <Link to="menu">
-          <button className="btn btn-outline border-0 border-b-4 btn-secondary">
-            View full menu
-          </button>
-        </Link>
+      <div className="bg-slate-200 p-4">
+        <div className="grid md:grid-cols-2 gap-8">
+          {popular.map((item) => (
+            <MenuItem key={item._id} item={item}></MenuItem>
+          ))}
+        </div>
+        <div className="text-center mt-5">
+          <Link to="menu">
+            <button className="btn btn-outline border-0 border-b-4 btn-secondary">
+              View full menu
+            </button>
+          </Link>
+        </div>
       </div>
     </section>
   );

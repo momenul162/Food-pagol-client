@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const FeatureItem = () => {
   return (
-    <section className="bg-feature bg-fixed md:px-12 md:py-16 lg:px-24 lg:py-26">
+    <section className="bg-feature bg-fixed md:px-12 md:py-5 lg:px-24 lg:py-10">
       <SectionTitle subHeader="Check it out" mainHeader="Food Feature"></SectionTitle>
 
       <div className="card md:card-side shadow-xl bg-slate-500 bg-opacity-30">

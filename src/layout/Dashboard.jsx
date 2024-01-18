@@ -6,6 +6,7 @@ import { BsFillCalendar2HeartFill } from "react-icons/bs";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { ImSpoonKnife } from "react-icons/im";
 import { TfiMenuAlt } from "react-icons/tfi";
+import { SlCalender } from "react-icons/sl";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/userAdmin";
 
@@ -109,16 +110,6 @@ const Dashboard = () => {
                   <span className="badge badge-sm badge-error indicator-item">
                     +{cart?.length || 0}
                   </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/addreview">
-                  <MdReviews></MdReviews> Add Review
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/mybooking">
-                  <BsFillCalendar2HeartFill></BsFillCalendar2HeartFill> My Booking
                 </NavLink>
               </li>
             </>

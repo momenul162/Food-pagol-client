@@ -20,7 +20,6 @@ const CheckoutForm = ({ cart, price }) => {
   useEffect(() => {
     if (price > 0) {
       baseUrl.post("/create-payment-intent", { price }).then((res) => {
-        console.log(res.data);
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -42,10 +41,8 @@ const CheckoutForm = ({ cart, price }) => {
 
     if (error) {
       setCardError(error.message);
-      console.log("[error]", error.message);
     } else {
       setCardError("");
-      console.log("[PaymentMethod]", paymentMethod);
     }
     setProcessing(true);
 
@@ -79,7 +76,6 @@ const CheckoutForm = ({ cart, price }) => {
         itemNames: cart?.map((item) => item.name),
       };
       baseUrl.post("/payments", payment).then((res) => {
-        console.log(res.data);
         if (res.data.insertedResult) {
           navigate("/");
         }
