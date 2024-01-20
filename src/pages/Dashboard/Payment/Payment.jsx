@@ -14,7 +14,7 @@ const Payment = () => {
   const price = parseFloat(total?.toFixed(2));
 
   return (
-    <div className="w-3/4">
+    <div className="w-3/4 mx-auto">
       <SectionTitle mainHeader="Payment"></SectionTitle>
       <Elements stripe={stripePromise}>
         <CheckoutForm cart={cart} price={price}></CheckoutForm>

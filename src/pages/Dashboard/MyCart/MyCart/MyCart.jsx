@@ -43,7 +43,7 @@ const MyCart = () => {
   };
 
   return (
-    <div className="overflow-x-auto min-w-full px-20">
+    <div className="overflow-x-auto min-w-full px-5 md:px-20">
       <SectionTitle subHeader="My Cart" mainHeader="add more"></SectionTitle>
       <div className="flex justify-between mb-8 uppercase">
         <h1 className="text-3xl">Tota Orders: {cart.length}</h1>

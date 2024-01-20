@@ -6,7 +6,6 @@ import Foods from "../pages/Foods/Foods/Foods";
 import LoginLayout from "../layout/LoginLayout";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
-import Secret from "../pages/Shared/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart/MyCart";
@@ -80,8 +79,8 @@ export const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>,
       },
       {
-        path: "review/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+        path: "payments/:id",
+        loader: ({ params }) => fetch(`http://localhost:5000/payments/${params.id}`),
         element: <AddReview></AddReview>,
       },
 

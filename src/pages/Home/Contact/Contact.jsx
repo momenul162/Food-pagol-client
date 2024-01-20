@@ -8,7 +8,7 @@ const Contact = () => {
     reset();
   };
   return (
-    <div className="w-1/2 mx-auto shadow-xl p-8 rounded-lg mt-10 bg-slate-200">
+    <div className="md:w-1/2 mx-auto shadow-xl p-8 rounded-lg mt-10 bg-slate-200">
       <h1 className="text-3xl font-semibold text-center uppercase">Contact us</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="text-center">
         <div className="form-control">
