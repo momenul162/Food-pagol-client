@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "payments/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/payments/${params.id}`),
+        loader: ({ params }) => fetch(`https://food-pagol.onrender.com/payments/${params.id}`),
         element: <AddReview></AddReview>,
       },
 
@@ -119,7 +119,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "updateitem/:id",
-        loader: ({ params }) => fetch(`http://localhost:5000/menu/${params.id}`),
+        loader: ({ params }) => fetch(`https://food-pagol.onrender.com/menu/${params.id}`),
         element: (
           <AdminRoute>
             <UpdateItem></UpdateItem>

@@ -18,7 +18,7 @@ const SocialLogin = () => {
       console.log(user);
 
       const saveUser = { name: user.displayName, email: user.email };
-      fetch("http://localhost:5000/users", {
+      fetch("https://food-pagol.onrender.com/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

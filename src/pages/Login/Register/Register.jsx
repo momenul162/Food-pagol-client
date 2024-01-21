@@ -30,7 +30,7 @@ const Register = () => {
         userUpdateProfile(data.name);
         const loggedUser = { name: data.name, email: data.email };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://food-pagol.onrender.com/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
